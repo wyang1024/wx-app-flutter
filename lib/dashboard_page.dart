@@ -6,6 +6,7 @@ import 'widgets/health_progress_ring.dart';
 import 'widgets/action_buttons.dart';
 import 'widgets/stat_card.dart';
 import 'widgets/alert_card.dart';
+import 'record_buying_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -43,7 +44,12 @@ class _DashboardPageState extends State<DashboardPage> {
             const SizedBox(height: 24),
             ActionButtons(
               onRecordSmoking: () {},
-              onRecordBuying: () {},
+              onRecordBuying: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RecordBuyingPage()),
+                );
+              },
             ),
             const SizedBox(height: 24),
             Row(

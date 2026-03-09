@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const Color primary = Color(0xFF009485);
@@ -10,12 +11,12 @@ class AppTheme {
   static const Color textDark = Color(0xFFF1F5F9); // Slate-100
   static const Color primaryLight = Color(0x33009485); // primary/20
 
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData get lightTheme => ThemeData(
     brightness: Brightness.light,
     primaryColor: primary,
     scaffoldBackgroundColor: backgroundLight,
     useMaterial3: true,
-    textTheme: const TextTheme().apply(
+    textTheme: GoogleFonts.manropeTextTheme().apply(
       bodyColor: textLight,
       displayColor: textLight,
     ),
@@ -27,12 +28,12 @@ class AppTheme {
     ),
   );
 
-  static ThemeData darkTheme = ThemeData(
+  static ThemeData get darkTheme => ThemeData(
     brightness: Brightness.dark,
     primaryColor: primary,
     scaffoldBackgroundColor: backgroundDark,
     useMaterial3: true,
-    textTheme: const TextTheme().apply(
+    textTheme: GoogleFonts.manropeTextTheme().apply(
       bodyColor: textDark,
       displayColor: textDark,
     ),
