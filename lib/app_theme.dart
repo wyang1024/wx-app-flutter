@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const Color primary = Color(0xFF009485);
@@ -16,7 +15,7 @@ class AppTheme {
     primaryColor: primary,
     scaffoldBackgroundColor: backgroundLight,
     useMaterial3: true,
-    textTheme: GoogleFonts.manropeTextTheme().apply(
+    textTheme: const TextTheme().apply(
       bodyColor: textLight,
       displayColor: textLight,
     ),
@@ -33,7 +32,7 @@ class AppTheme {
     primaryColor: primary,
     scaffoldBackgroundColor: backgroundDark,
     useMaterial3: true,
-    textTheme: GoogleFonts.manropeTextTheme().apply(
+    textTheme: const TextTheme().apply(
       bodyColor: textDark,
       displayColor: textDark,
     ),
