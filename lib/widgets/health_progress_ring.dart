@@ -160,5 +160,11 @@ class _RingPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    if (oldDelegate is! _RingPainter) return true;
+    return progress != oldDelegate.progress ||
+        backgroundColor != oldDelegate.backgroundColor ||
+        progressColor != oldDelegate.progressColor;
+  }
 }
