@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
 import 'models/tobacco_brand.dart';
+import 'custom_tobacco_page.dart';
 
 class RecordBuyingPage extends StatefulWidget {
   const RecordBuyingPage({super.key});
@@ -198,7 +199,11 @@ class _RecordBuyingPageState extends State<RecordBuyingPage> {
             backgroundColor: AppTheme.primary.withOpacity(0.05),
             textColor: AppTheme.primary,
             borderColor: AppTheme.primary.withOpacity(0.3),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const CustomTobaccoPage()),
+              );
+            },
           ),
           const SizedBox(height: 12),
           _ActionButton(
