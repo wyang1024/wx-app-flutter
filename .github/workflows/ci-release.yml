@@ -77,11 +77,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: android-appbundle
+          path: artifacts/android
 
-      - name: Download iOS artifact
+      - name: Download iOS artifact (may be missing)
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: ios-ipa
+          path: artifacts/ios
 
       - name: Determine release tag
         run: |
@@ -103,18 +106,30 @@ jobs:
           draft: ${{ env.RELEASE_DRAFT }}
           prerelease: false
 
+      - name: Locate downloaded artifacts
+        id: locate_artifacts
+        run: |
+          ANDROID_FILE=$(find artifacts -type f -name "*.aab" -print -quit || true)
+          IOS_FILE=$(find artifacts -type f -name "*.ipa" -print -quit || true)
+          echo "ANDROID_FILE=$ANDROID_FILE" >> $GITHUB_ENV
+          echo "IOS_FILE=$IOS_FILE" >> $GITHUB_ENV
+          echo "Found ANDROID_FILE=$ANDROID_FILE"
+          echo "Found IOS_FILE=$IOS_FILE"
+
       - name: Upload Android AAB to release
+        if: env.ANDROID_FILE != ''
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/app/outputs/bundle/release/app-release.aab
+          asset_path: ${{ env.ANDROID_FILE }}
           asset_name: app-${{ env.RELEASE_TAG }}.aab
           asset_content_type: application/octet-stream
 
       - name: Upload iOS IPA to release
+        if: env.IOS_FILE != ''
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/ios/ipa/Runner.ipa
+          asset_path: ${{ env.IOS_FILE }}
           asset_name: ios-${{ env.RELEASE_TAG }}.ipa
           asset_content_type: application/octet-stream
