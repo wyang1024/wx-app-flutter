@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
 import 'dashboard_page.dart';
+import 'record_buying_page.dart';
 
 void main() {
   runApp(const SmokeFreeApp());

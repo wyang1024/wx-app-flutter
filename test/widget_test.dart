@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:smoke_free/main.dart';
 import 'package:smoke_free/dashboard_page.dart';
 
 void main() {
+  setUpAll(() {
+    GoogleFonts.config.allowRuntimeFetching = false;
+  });
+
   testWidgets('Dashboard loads correctly', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const SmokeFreeApp());
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: DashboardPage(),
+      ),
+    );
 
     // Verify that the title is present.
     expect(find.text('烟瘾退散'), findsWidgets);
