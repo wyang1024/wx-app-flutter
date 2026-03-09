@@ -101,6 +101,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ env.RELEASE_TAG }}
           release_name: ${{ env.RELEASE_TAG }}
           draft: ${{ env.RELEASE_DRAFT }}
@@ -120,6 +121,7 @@ jobs:
         if: env.ANDROID_FILE != ''
         uses: actions/upload-release-asset@v1
         with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{ env.ANDROID_FILE }}
           asset_name: app-${{ env.RELEASE_TAG }}.aab
@@ -129,6 +131,7 @@ jobs:
         if: env.IOS_FILE != ''
         uses: actions/upload-release-asset@v1
         with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{ env.IOS_FILE }}
           asset_name: ios-${{ env.RELEASE_TAG }}.ipa
