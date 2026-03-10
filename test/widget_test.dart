@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smoke_free/main.dart';
 import 'package:smoke_free/dashboard_page.dart';
 
 void main() {
@@ -17,21 +16,20 @@ void main() {
       ),
     );
 
-    // Verify that the title is present.
-    expect(find.text('烟瘾退散'), findsWidgets);
-
     // Verify that some key widgets are present.
-    expect(find.text('今日已抽：5 支'), findsOneWidget);
-    expect(find.text('12'), findsOneWidget); // Days
-    expect(find.text('08'), findsOneWidget); // Hours
-    expect(find.text('45'), findsOneWidget); // Minutes
+    expect(find.text('距离上次吸烟已过去'), findsOneWidget);
+    expect(find.textContaining('12', findRichText: true), findsOneWidget);
+    expect(find.textContaining('45', findRichText: true), findsOneWidget);
+    expect(find.text('累计戒烟时长 | 身体持续修复中'), findsOneWidget);
 
-    // Verify action buttons.
-    expect(find.text('记录抽烟'), findsOneWidget);
-    expect(find.text('记录买烟'), findsOneWidget);
+    expect(find.textContaining('今日已抽：5 支', findRichText: true), findsOneWidget);
 
-    // Verify stats.
-    expect(find.text('285 支'), findsOneWidget);
-    expect(find.text('¥142.50'), findsOneWidget);
+    expect(find.text('冲动缓冲冷静期'), findsOneWidget);
+    expect(find.textContaining('启动 15 分钟 冷静期', findRichText: true), findsOneWidget);
+
+    expect(find.text('本月烧掉的钱'), findsOneWidget);
+    expect(find.text('¥850'), findsOneWidget);
+
+    expect(find.text('我刚抽了一根，帮我重启'), findsOneWidget);
   });
 }
