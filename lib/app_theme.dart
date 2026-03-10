@@ -10,6 +10,13 @@ class AppTheme {
   static const Color textDark = Color(0xFFF1F5F9); // Slate-100
   static const Color primaryLight = Color(0x33009485); // primary/20
 
+  // Design Reference Colors
+  static const Color brandGreen = Color(0xFF52C41A);
+  static const Color brandBlue = Color(0xFF1890FF);
+  static const Color brandOrange = Color(0xFFFAAD14);
+  static const Color brandRed = Color(0xFFFF4D4F);
+  static const Color bgGray = Color(0xFFF7F8FA);
+
   static ThemeData get lightTheme => ThemeData(
     brightness: Brightness.light,
     primaryColor: primary,
